@@ -1,9 +1,12 @@
 apply plugin: 'com.android.feature'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 android {
+    baseFeature = true
+
     compileSdkVersion 26
     buildToolsVersion "26.0.1"
-    baseFeature true
     defaultConfig {
         minSdkVersion 23
         targetSdkVersion 26
@@ -19,8 +22,12 @@ android {
 }
 
 dependencies {
-    api 'com.android.support:appcompat-v7:26.1.0'
-    api 'com.android.support.constraint:constraint-layout:1.0.2'
     application project(':app')
     feature project(':feature')
+    feature project(":minifeature")
+
+    api 'com.android.support:appcompat-v7:26.1.0'
+    api "com.android.support:design:26.1.0"
+    api 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 }
